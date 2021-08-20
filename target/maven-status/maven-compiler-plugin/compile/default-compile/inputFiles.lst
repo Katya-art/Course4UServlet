@@ -1,4 +1,5 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/Command.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/ChangeStudentsStatusCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/CommandUtility.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/filters/EncodingFilter.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/listener/SessionListener.java

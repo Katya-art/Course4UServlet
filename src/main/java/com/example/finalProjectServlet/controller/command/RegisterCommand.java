@@ -58,10 +58,16 @@ public class RegisterCommand implements Command {
         }
 
         try {
-            userDao.save(fullName, username, email, password, 1, 1);
-            User user = new User(fullName, username, email, password, 1, 1);
-            request.getSession().setAttribute("user", user);
-            CommandUtility.checkUserIsLogged(request, username);
+            int roleId = 1;
+            if (request.getParameter("role").equals("teacher")) {
+                roleId = 3;
+            }
+            userDao.save(fullName, username, email, password, roleId, 1);
+            User user = new User(fullName, username, email, password, roleId, 1);
+            if (roleId == 3) {
+                request.getSession().setAttribute("user", user);
+                CommandUtility.checkUserIsLogged(request, username);
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

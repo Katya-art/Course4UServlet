@@ -20,7 +20,7 @@
 <body>
 
 <div class="container" style="width: 330px">
-    <form method="post" action="${pageContext.request.contextPath}/register">
+    <form method="post" action="${pageContext.request.contextPath}/register?role=${pageContext.request.getAttribute("role")}">
         <h2 class="form-heading">Create new account</h2>
         <span style="color: #ac2925">${error}</span>
         <input name="fullName" type="text" class="form-control" placeholder="Full name"
