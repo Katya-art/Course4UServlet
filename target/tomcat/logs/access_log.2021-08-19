@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:18:41:09 +0300] "GET /course4u HTTP/1.1" 302 - http-bio-8888-exec-2 0
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:18:41:10 +0300] "GET /course4u/ HTTP/1.1" 200 169 http-bio-8888-exec-3 784
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:18:41:12 +0300] "GET /course4u/hello-servlet HTTP/1.1" 200 50 http-bio-8888-exec-4 2
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:19:52:34 +0300] "GET /course4u HTTP/1.1" 302 - http-bio-8888-exec-2 0
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:19:52:34 +0300] "GET /course4u/ HTTP/1.1" 200 169 http-bio-8888-exec-3 34
+0:0:0:0:0:0:0:1 - - [19/Aug/2021:19:52:39 +0300] "GET /course4u/hello-servlet HTTP/1.1" 404 995 http-bio-8888-exec-4 3

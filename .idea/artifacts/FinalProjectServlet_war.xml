@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FinalProjectServlet:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>FinalProjectServlet</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="Course4U.war">
+      <element id="artifact" artifact-name="FinalProjectServlet:war exploded" />
+    </root>
+  </artifact>
+</component>
