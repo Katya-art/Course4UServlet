@@ -15,6 +15,8 @@ public class UserDao {
 
     private static final String SQL_FIND_BY_USERNAME = "SELECT * FROM users WHERE username = ?;";
 
+    private static final String SQL_FIND_BY_ID = "SELECT * FROM users WHERE id = ?;";
+
     private static final String SQL_FIND_ALL_BY_ROLE = "SELECT * FROM users WHERE role_id = ?;";
 
     private static final String SQL_UPDATE_USER_STATUS = "UPDATE users SET status_id=? WHERE id=?";
@@ -50,6 +52,33 @@ public class UserDao {
             con = DBManager.getInstance().getConnection();
             preparedStatement = con.prepareStatement(SQL_FIND_BY_USERNAME);
             preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = new User(resultSet.getString("full_name"),
+                        resultSet.getString("username"), resultSet.getString("email"),
+                        resultSet.getString("password"), resultSet.getInt("role_id"),
+                        resultSet.getInt("status_id"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(con);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(con);
+        }
+        return user;
+    }
+
+    public User findById(Long id) {
+        User user = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Connection con = null;
+        try {
+            con = DBManager.getInstance().getConnection();
+            preparedStatement = con.prepareStatement(SQL_FIND_BY_ID);
+            preparedStatement.setLong(1, id);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 user = new User(resultSet.getString("full_name"),

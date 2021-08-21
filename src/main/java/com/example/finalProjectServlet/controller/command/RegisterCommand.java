@@ -54,7 +54,7 @@ public class RegisterCommand implements Command {
         }
 
         if (hasError || userDao.findByUsername(username) != null) {
-            return "/register.jsp";
+            return String.format("/register?role=%s", request.getParameter("role"));
         }
 
         try {
@@ -64,7 +64,7 @@ public class RegisterCommand implements Command {
             }
             userDao.save(fullName, username, email, password, roleId, 1);
             User user = new User(fullName, username, email, password, roleId, 1);
-            if (roleId == 3) {
+            if (roleId == 1) {
                 request.getSession().setAttribute("user", user);
                 CommandUtility.checkUserIsLogged(request, username);
             }

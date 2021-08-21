@@ -1,6 +1,7 @@
 package com.example.finalProjectServlet.controller;
 
 import com.example.finalProjectServlet.controller.command.*;
+import com.example.finalProjectServlet.model.dao.CourseDao;
 import com.example.finalProjectServlet.model.dao.UserDao;
 
 import javax.servlet.ServletConfig;
@@ -29,6 +30,7 @@ public class Servlet extends HttpServlet {
         commands.put("login", new LoginCommand());
         commands.put("students_list", new GetStudentsListCommand(new UserDao()));
         commands.put("change_student_status", new ChangeStudentsStatusCommand(new UserDao()));
+        commands.put("add_course", new AddCourseCommand(new CourseDao()));
     }
 
     public void doGet(HttpServletRequest request,
