@@ -31,6 +31,7 @@ public class Servlet extends HttpServlet {
         commands.put("students_list", new GetStudentsListCommand(new UserDao()));
         commands.put("change_student_status", new ChangeStudentsStatusCommand(new UserDao()));
         commands.put("add_course", new AddCourseCommand(new CourseDao()));
+        commands.put("delete_course", new DeleteCourseCommand(new CourseDao()));
     }
 
     public void doGet(HttpServletRequest request,

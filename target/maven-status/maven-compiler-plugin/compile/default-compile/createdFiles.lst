@@ -7,6 +7,7 @@ com/example/finalprojectservlet/model/dao/UserDao.class
 com/example/finalprojectservlet/model/entity/Status.class
 com/example/finalprojectservlet/controller/command/ChangeStudentsStatusCommand.class
 com/example/finalprojectservlet/model/dao/CourseDao.class
+com/example/finalprojectservlet/controller/command/DeleteCourseCommand.class
 com/example/finalprojectservlet/controller/command/RegisterCommand.class
 com/example/finalprojectservlet/model/DBManager.class
 com/example/finalprojectservlet/controller/filters/EncodingFilter.class

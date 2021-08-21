@@ -43,7 +43,7 @@
                     <td><a href="${pageContext.request.contextPath}/edit_course"
                            class="btn btn-info mt-4">Edit</a></td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/delete_course"
+                        <a href="${pageContext.request.contextPath}/delete_course?id=<c:out value='${course.id}'/>"
                            class="btn btn-danger mt-4">Delete</a></td>
                 </c:if>
             </tr>

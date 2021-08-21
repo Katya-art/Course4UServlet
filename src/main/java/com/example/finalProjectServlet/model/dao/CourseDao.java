@@ -2,7 +2,6 @@ package com.example.finalProjectServlet.model.dao;
 
 import com.example.finalProjectServlet.model.DBManager;
 import com.example.finalProjectServlet.model.entity.Course;
-import com.example.finalProjectServlet.model.entity.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +17,8 @@ public class CourseDao {
             " (?, ?, ?, ?, ?);";
 
     private static final String SQL_FIND_ALL_BY_CONDITION = "SELECT * FROM courses WHERE condition_id != ?;";
+
+    private static final String SQL_DELETE_COURSE = "DELETE FROM courses WHERE id = ?;";
 
     public void save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
@@ -66,5 +67,21 @@ public class CourseDao {
             DBManager.getInstance().commitAndClose(connection);
         }
         return courses;
+    }
+
+    public void deleteCourse(Long id) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_COURSE);
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
     }
 }
