@@ -17,6 +17,8 @@
                     <a class="navbar-brand" href="register.jsp?role=student">Register</a>
                 </c:when>
                 <c:otherwise>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/user.jsp">
+                        <%=((User)session.getAttribute("user")).getUsername()%></a>
                     <a class="navbar-brand" href="${pageContext.request.contextPath}/logout">Logout</a>
                 </c:otherwise>
             </c:choose>

@@ -40,7 +40,7 @@
                 <td>${course.duration}</td>
                 <td>0</td>
                 <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 2%>'>
-                    <td><a href="${pageContext.request.contextPath}/edit_course"
+                    <td><a href="${pageContext.request.contextPath}/edit_course.jsp?id=<c:out value="${course.id}"/>"
                            class="btn btn-info mt-4">Edit</a></td>
                     <td>
                         <a href="${pageContext.request.contextPath}/delete_course?id=<c:out value='${course.id}'/>"

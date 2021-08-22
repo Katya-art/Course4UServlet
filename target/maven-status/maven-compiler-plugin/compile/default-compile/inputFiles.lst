@@ -1,5 +1,6 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/Command.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/ChangeStudentsStatusCommand.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/DeleteCourseCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Condition.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/CommandUtility.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/filters/EncodingFilter.java
@@ -16,6 +17,7 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/Servlet.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/LoginCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Status.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/EditCourseCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/User.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Course.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/ExceptionCommand.java

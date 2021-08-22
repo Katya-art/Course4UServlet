@@ -155,3 +155,5 @@
 0:0:0:0:0:0:0:1 - - [21/Aug/2021:23:31:51 +0300] "GET /course4u/index.jsp HTTP/1.1" 200 3961 http-bio-8888-exec-6 72
 0:0:0:0:0:0:0:1 - - [21/Aug/2021:23:32:04 +0300] "GET /course4u/delete_course?id=4 HTTP/1.1" 302 - http-bio-8888-exec-7 41
 0:0:0:0:0:0:0:1 - - [21/Aug/2021:23:32:04 +0300] "GET /course4u/index.jsp HTTP/1.1" 200 3440 http-bio-8888-exec-8 81
+0:0:0:0:0:0:0:1 - - [21/Aug/2021:23:34:34 +0300] "GET /course4u/edit_course HTTP/1.1" 200 3440 http-bio-8888-exec-10 83
+0:0:0:0:0:0:0:1 - - [21/Aug/2021:23:34:35 +0300] "GET /course4u/edit_course HTTP/1.1" 200 3440 http-bio-8888-exec-10 84

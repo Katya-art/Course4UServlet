@@ -20,6 +20,11 @@ public class CourseDao {
 
     private static final String SQL_DELETE_COURSE = "DELETE FROM courses WHERE id = ?;";
 
+    private static final String SQL_FIND_COURSE_BY_ID = "SELECT * FROM courses WHERE id = ?";
+
+    private static final String SQL_UPDATE_COURSE_BY_ID = "UPDATE courses SET name = ?, theme = ?, duration = ?, " +
+            "teacher_id = ? WHERE id = ?";
+
     public void save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
         Connection connection = null;
@@ -75,6 +80,52 @@ public class CourseDao {
             connection = DBManager.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_DELETE_COURSE);
             preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+    }
+
+    public Course findById(Long id) {
+        Course course = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement(SQL_FIND_COURSE_BY_ID);
+            preparedStatement.setLong(1, id);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                course = new Course(resultSet.getLong("id"), resultSet.getString("name"),
+                        resultSet.getString("theme"), resultSet.getInt("duration"),
+                        resultSet.getInt("teacher_id"), resultSet.getInt("condition_id"));
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+        return course;
+    }
+
+    public void updateCourse(Long id, String name, String theme, int duration, int teacher_id) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_COURSE_BY_ID);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, theme);
+            preparedStatement.setInt(3, duration);
+            preparedStatement.setInt(4, teacher_id);
+            preparedStatement.setLong(5, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException ex) {
