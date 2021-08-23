@@ -17,8 +17,10 @@ com/example/finalprojectservlet/model/entity/Role.class
 com/example/finalprojectservlet/controller/listener/SessionListener.class
 com/example/finalprojectservlet/controller/command/MainCommand.class
 com/example/finalprojectservlet/controller/command/EditCourseCommand.class
+com/example/finalprojectservlet/controller/command/EnrollCourseCommand.class
 com/example/finalprojectservlet/model/entity/Course.class
 com/example/finalprojectservlet/controller/filters/AuthFilter.class
 com/example/finalprojectservlet/controller/command/Command.class
 com/example/finalprojectservlet/controller/command/GetStudentsListCommand.class
 com/example/finalprojectservlet/controller/command/LogOutCommand.class
+com/example/finalprojectservlet/model/entity/Mark.class

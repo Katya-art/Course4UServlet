@@ -20,6 +20,9 @@ public class Course {
         return id;
     }
 
+    public Course() {
+    }
+
     public Course(Long id, String name, String theme, int duration, int teacherId, int conditionId) {
         this.id = id;
         this.name = name;

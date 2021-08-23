@@ -58,6 +58,7 @@ public class UserDao {
                         resultSet.getString("username"), resultSet.getString("email"),
                         resultSet.getString("password"), resultSet.getInt("role_id"),
                         resultSet.getInt("status_id"));
+                user.setId(resultSet.getLong("id"));
             }
             resultSet.close();
             preparedStatement.close();

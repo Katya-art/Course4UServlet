@@ -20,10 +20,19 @@ public class CourseDao {
 
     private static final String SQL_DELETE_COURSE = "DELETE FROM courses WHERE id = ?;";
 
-    private static final String SQL_FIND_COURSE_BY_ID = "SELECT * FROM courses WHERE id = ?";
+    private static final String SQL_FIND_COURSE_BY_ID = "SELECT * FROM courses WHERE id = ?;";
 
     private static final String SQL_UPDATE_COURSE_BY_ID = "UPDATE courses SET name = ?, theme = ?, duration = ?, " +
-            "teacher_id = ? WHERE id = ?";
+            "teacher_id = ? WHERE id = ?;";
+
+    private static final String SQL_ADD_STUDENT_TO_COURSE = "INSERT INTO course_students_marks (course_id," +
+            " student_id, mark_id) VALUES (?, ?, ?);";
+
+    private static final String SQL_FIND_COURSE_BY_ID_AND_STUDENT = "SELECT * FROM course_students_marks WHERE" +
+            " course_id = ? AND student_id = ?;";
+
+    private static final String SQL_GET_NUMBER_OF_STUDENTS = "SELECT COUNT(*) FROM course_students_marks WHERE " +
+            "course_id = ?;";
 
     public void save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
@@ -134,5 +143,72 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+    }
+
+    public void addStudentToCourse(Long course_id, Long student_id, Long mark_id) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_ADD_STUDENT_TO_COURSE);
+            preparedStatement.setLong(1, course_id);
+            preparedStatement.setLong(2, student_id);
+            preparedStatement.setLong(3, mark_id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+    }
+
+    public boolean checkCourseForStudents(Long courseId, Long studentId) {
+        boolean isContain = false;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement(SQL_FIND_COURSE_BY_ID_AND_STUDENT);
+            preparedStatement.setLong(1, courseId);
+            preparedStatement.setLong(2, studentId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                isContain = true;
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+        return isContain;
+    }
+
+    public int getNumberOfStudents(Long courseId) {
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Connection connection = null;
+        int numberOfStudents = 0;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement(SQL_GET_NUMBER_OF_STUDENTS);
+            preparedStatement.setLong(1, courseId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                numberOfStudents = resultSet.getInt(1);
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+        return numberOfStudents;
     }
 }
