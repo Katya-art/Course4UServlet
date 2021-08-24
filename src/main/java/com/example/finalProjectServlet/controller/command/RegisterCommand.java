@@ -63,7 +63,7 @@ public class RegisterCommand implements Command {
                 roleId = 3;
             }
             userDao.save(fullName, username, email, password, roleId, 1);
-            User user = new User(fullName, username, email, password, roleId, 1);
+            User user = userDao.findByUsername(username);
             if (roleId == 1) {
                 request.getSession().setAttribute("user", user);
                 CommandUtility.checkUserIsLogged(request, username);
@@ -72,6 +72,6 @@ public class RegisterCommand implements Command {
             e.printStackTrace();
         }
 
-        return "/index.jsp";
+        return "redirect:/index.jsp";
     }
 }

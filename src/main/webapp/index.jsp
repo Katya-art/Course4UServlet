@@ -31,7 +31,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="<%=(new CourseDao()).findAllByCondition(3)%>" var="course">
+        <c:forEach items="<%=(new CourseDao()).findAllByConditionNotEqual(3)%>" var="course">
             <jsp:useBean id="currentCourse" class="com.example.finalProjectServlet.model.entity.Course"/>
             <jsp:setProperty name="currentCourse" property="id" value="${course.id}"/>
             <tr>
@@ -39,19 +39,23 @@
                 <td>${course.teacherName}</td>
                 <td>${course.theme}</td>
                 <td>${course.duration}</td>
-                <td><%=(new CourseDao()).getNumberOfStudents(currentCourse.getId())%></td>
-                <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 2%>'>
+                <td><%=(new CourseDao()).getNumberOfStudents(currentCourse.getId())%>
+                </td>
+                <c:if test='<%=session.getAttribute("user") != null &&
+                ((User)session.getAttribute("user")).getRoleId() == 2%>'>
                     <td><a href="${pageContext.request.contextPath}/edit_course.jsp?id=<c:out value="${course.id}"/>"
                            class="btn btn-info mt-4">Edit</a></td>
                     <td>
                         <a href="${pageContext.request.contextPath}/delete_course?id=<c:out value='${course.id}'/>"
                            class="btn btn-danger mt-4">Delete</a></td>
                 </c:if>
-                <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 1%>'>
+                <c:if test='<%=session.getAttribute("user") != null &&
+                ((User)session.getAttribute("user")).getRoleId() == 1%>'>
                     <c:choose>
                         <c:when test='<%=((User)session.getAttribute("user")).getStatusId() == 1%>'>
                             <c:choose>
-                                <c:when test='<%=!(new CourseDao()).checkCourseForStudents(currentCourse.getId(), ((User)session.getAttribute("user")).getId())%>'>
+                                <c:when test='<%=!(new CourseDao()).checkCourseForStudents(currentCourse.getId(),
+                                ((User)session.getAttribute("user")).getId())%>'>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/enroll_course?course_id=<c:out value='${course.id}'/>&student_id=<c:out value='<%=((User)session.getAttribute("user")).getId()%>'/>"
                                            class="btn btn-primary">Enroll</a></td>

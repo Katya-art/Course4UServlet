@@ -4,6 +4,9 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/">Course4U</a>
+            <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 1%>'>
+                <a class="navbar-brand" href="students_courses.jsp?condition=not_started">My courses</a>
+            </c:if>
             <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 2%>'>
                 <a class="navbar-brand" href="register.jsp?role=teacher">Add teacher</a>
                 <a class="navbar-brand" href="add_course.jsp">Add course</a>

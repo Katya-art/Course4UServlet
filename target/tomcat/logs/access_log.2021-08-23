@@ -116,3 +116,13 @@
 0:0:0:0:0:0:0:1 - - [23/Aug/2021:19:44:18 +0300] "GET /course4u/index.jsp HTTP/1.1" 200 3781 http-bio-8888-exec-7 134
 0:0:0:0:0:0:0:1 - - [23/Aug/2021:19:44:48 +0300] "GET /course4u/user.jsp HTTP/1.1" 200 1723 http-bio-8888-exec-8 17
 0:0:0:0:0:0:0:1 - - [23/Aug/2021:19:44:54 +0300] "GET /course4u/ HTTP/1.1" 200 3781 http-bio-8888-exec-9 137
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:08:35 +0300] "GET /course4u/ HTTP/1.1" 200 2505 http-bio-8888-exec-1 1560
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:08:53 +0300] "GET /course4u/login.jsp HTTP/1.1" 200 1434 http-bio-8888-exec-2 16
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:09:01 +0300] "POST /course4u/login HTTP/1.1" 200 3909 http-bio-8888-exec-3 180
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:09:03 +0300] "GET /course4u/students_courses.jsp?status=not_started HTTP/1.1" 500 389 http-bio-8888-exec-4 85
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:09 +0300] "GET /course4u/students_courses.jsp?status=not_started HTTP/1.1" 500 362 http-bio-8888-exec-2 1218
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:11 +0300] "GET /course4u/students_list HTTP/1.1" 200 2836 http-bio-8888-exec-3 469
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:12 +0300] "GET /course4u/ HTTP/1.1" 200 2505 http-bio-8888-exec-4 154
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:14 +0300] "GET /course4u/login.jsp HTTP/1.1" 200 1434 http-bio-8888-exec-6 9
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:23 +0300] "POST /course4u/login HTTP/1.1" 200 3909 http-bio-8888-exec-7 160
+0:0:0:0:0:0:0:1 - - [23/Aug/2021:23:10:25 +0300] "GET /course4u/students_courses.jsp?status=not_started HTTP/1.1" 500 362 http-bio-8888-exec-8 7

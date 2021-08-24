@@ -16,7 +16,7 @@ public class CourseDao {
             "  (name, theme, duration, teacher_id, condition_id) VALUES " +
             " (?, ?, ?, ?, ?);";
 
-    private static final String SQL_FIND_ALL_BY_CONDITION = "SELECT * FROM courses WHERE condition_id != ?;";
+    private static final String SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL = "SELECT * FROM courses WHERE condition_id != ?;";
 
     private static final String SQL_DELETE_COURSE = "DELETE FROM courses WHERE id = ?;";
 
@@ -33,6 +33,11 @@ public class CourseDao {
 
     private static final String SQL_GET_NUMBER_OF_STUDENTS = "SELECT COUNT(*) FROM course_students_marks WHERE " +
             "course_id = ?;";
+
+    private static final String SQL_FIND_COURSE_ID_BY_STUDENT = "SELECT course_id FROM course_students_marks WHERE " +
+            "student_id = ?;";
+
+    private static final String SQL_FIND_BY_ID_AND_CONDITION = "SELECT * FROM courses WHERE id = ? AND condition_id = ?;";
 
     public void save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
@@ -55,14 +60,14 @@ public class CourseDao {
         }
     }
 
-    public Set<Course> findAllByCondition(int conditionId) {
+    public Set<Course> findAllByConditionNotEqual(int conditionId) {
         Set<Course> courses = new HashSet<>();
         PreparedStatement preparedStatement;
         ResultSet resultSet;
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
-            preparedStatement = connection.prepareStatement(SQL_FIND_ALL_BY_CONDITION);
+            preparedStatement = connection.prepareStatement(SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL);
             preparedStatement.setInt(1, conditionId);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -210,5 +215,41 @@ public class CourseDao {
             DBManager.getInstance().commitAndClose(connection);
         }
         return numberOfStudents;
+    }
+
+    public Set<Course> findAllByIdAndCondition(Long id, int conditionId) {
+        Set<Course> courses = new HashSet<>();
+        PreparedStatement preparedStatement, preparedStatement1 = null;
+        ResultSet resultSet, resultSet1 = null;
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            preparedStatement = connection.prepareStatement(SQL_FIND_COURSE_ID_BY_STUDENT);
+            preparedStatement.setLong(1, id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                preparedStatement1 = connection.prepareStatement(SQL_FIND_BY_ID_AND_CONDITION);
+                preparedStatement1.setLong(1, resultSet.getLong("course_id"));
+                preparedStatement1.setInt(2, conditionId);
+                resultSet1 = preparedStatement1.executeQuery();
+                if (resultSet1.next()) {
+                    Course course = new Course(resultSet1.getLong("id"),
+                            resultSet1.getString("name"), resultSet1.getString("theme"),
+                            resultSet1.getInt("duration"), resultSet1.getInt("teacher_id"),
+                            resultSet1.getInt("condition_id"));
+                    courses.add(course);
+                }
+            }
+            resultSet1.close();
+            resultSet.close();
+            preparedStatement1.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+        return courses;
     }
 }
