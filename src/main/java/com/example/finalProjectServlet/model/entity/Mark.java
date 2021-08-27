@@ -7,6 +7,10 @@ public enum Mark {
         return Mark.values()[markId - 1];
     }
 
+    public static int getMarkId(String name) {
+        return Mark.valueOf(name).ordinal() + 1;
+    }
+
     public String getName() {
         return name().toLowerCase();
     }

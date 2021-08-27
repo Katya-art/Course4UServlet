@@ -41,6 +41,9 @@
             <th scope="col">Teacher name</th>
             <th scope="col">Theme</th>
             <th scope="col">Duration</th>
+            <c:if test='<%=request.getParameter("condition").equals("completed")%>'>
+                <th scope="col">Mark</th>
+            </c:if>
         </tr>
         </thead>
         <tbody>
@@ -52,6 +55,13 @@
                 <td>${course.teacherName}</td>
                 <td>${course.theme}</td>
                 <td>${course.duration}</td>
+                <c:if test='<%=request.getParameter("condition").equals("completed")%>'>
+                    <jsp:useBean id="currentCourse" class="com.example.finalProjectServlet.model.entity.Course"/>
+                    <jsp:setProperty name="currentCourse" property="id" value="${course.id}"/>
+                    <td><%=(new CourseDao()).findStudentMark(currentCourse.getId(),
+                            ((User) session.getAttribute("user")).getId()).name().toUpperCase()%>
+                    </td>
+                </c:if>
             </tr>
         </c:forEach>
         </tbody>

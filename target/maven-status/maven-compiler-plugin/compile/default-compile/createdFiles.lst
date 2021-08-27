@@ -1,12 +1,14 @@
 com/example/finalprojectservlet/controller/command/LoginCommand.class
 com/example/finalprojectservlet/model/entity/User.class
 com/example/finalprojectservlet/controller/command/CommandUtility.class
+com/example/finalprojectservlet/controller/command/FinishCourseCommand.class
 com/example/finalprojectservlet/controller/Servlet.class
 com/example/finalprojectservlet/model/entity/Condition.class
 com/example/finalprojectservlet/model/dao/UserDao.class
 com/example/finalprojectservlet/model/entity/Status.class
 com/example/finalprojectservlet/controller/command/ChangeStudentsStatusCommand.class
 com/example/finalprojectservlet/model/dao/CourseDao.class
+com/example/finalprojectservlet/controller/command/StartCourseCommand.class
 com/example/finalprojectservlet/controller/command/DeleteCourseCommand.class
 com/example/finalprojectservlet/controller/command/RegisterCommand.class
 com/example/finalprojectservlet/model/DBManager.class
@@ -21,6 +23,7 @@ com/example/finalprojectservlet/controller/command/EnrollCourseCommand.class
 com/example/finalprojectservlet/model/entity/Course.class
 com/example/finalprojectservlet/controller/filters/AuthFilter.class
 com/example/finalprojectservlet/controller/command/Command.class
+com/example/finalprojectservlet/controller/command/SaveJournalCommand.class
 com/example/finalprojectservlet/controller/command/GetStudentsListCommand.class
 com/example/finalprojectservlet/controller/command/LogOutCommand.class
 com/example/finalprojectservlet/model/entity/Mark.class

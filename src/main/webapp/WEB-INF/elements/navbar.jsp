@@ -12,6 +12,9 @@
                 <a class="navbar-brand" href="add_course.jsp">Add course</a>
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/students_list">List of students</a>
             </c:if>
+            <c:if test='<%=session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRoleId() == 3%>'>
+                <a class="navbar-brand" href="teachers_courses.jsp">My courses</a>
+            </c:if>
         </div>
         <div class="navbar-header navbar-right">
             <c:choose>
