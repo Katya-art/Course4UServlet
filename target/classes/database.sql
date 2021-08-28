@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS courses (
                                        theme VARCHAR(255) NOT NULL,
                                        duration INT NOT NULL,
                                        teacher_id INT NOT NULL,
-                                       condition_id INT NOT NULL
+                                       condition_id INT NOT NULL,
+                                       number_of_students INT NOT NULL
 )
     ENGINE = InnoDB;
 

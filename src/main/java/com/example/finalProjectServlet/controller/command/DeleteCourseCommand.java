@@ -15,6 +15,12 @@ public class DeleteCourseCommand implements Command{
     @Override
     public String execute(HttpServletRequest request) {
         courseDao.deleteCourse(Long.parseLong(request.getParameter("id")));
-        return "redirect:/index.jsp";
+        String page = request.getParameter("page");
+        String sortField = request.getParameter("sortField");
+        String sortDir = request.getParameter("sortDir");
+        String teacher = request.getParameter("teacher");
+        String theme = request.getParameter("theme");
+        return String.format("redirect:/index.jsp?page=%s&sortField=%s&sortDir=%s&teacher=%s&theme=%s", page,
+                sortField, sortDir, teacher, theme);
     }
 }

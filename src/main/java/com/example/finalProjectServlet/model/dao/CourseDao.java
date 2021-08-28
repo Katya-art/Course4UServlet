@@ -9,25 +9,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class CourseDao {
 
     private static final String SQL_SAVE_COURSE = "INSERT INTO courses" +
-            "  (name, theme, duration, teacher_id, condition_id) VALUES " +
-            " (?, ?, ?, ?, ?);";
+            "  (name, theme, duration, teacher_id, condition_id, number_of_students) VALUES " +
+            " (?, ?, ?, ?, ?, ?);";
 
-    private static final String SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL = "SELECT * FROM courses WHERE condition_id != ?;";
+    private static final String SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL = "SELECT * FROM courses WHERE condition_id != ? ";
 
     private static final String SQL_DELETE_COURSE = "DELETE FROM courses WHERE id = ?;";
 
     private static final String SQL_FIND_COURSE_BY_ID = "SELECT * FROM courses WHERE id = ?;";
 
     private static final String SQL_UPDATE_COURSE_BY_ID = "UPDATE courses SET name = ?, theme = ?, duration = ?, " +
-            "teacher_id = ? WHERE id = ?;";
+            "teacher_id = ?, number_of_students = ? WHERE id = ?;";
 
     private static final String SQL_ADD_STUDENT_TO_COURSE = "INSERT INTO course_students_marks (course_id," +
             " student_id, mark_id) VALUES (?, ?, ?);";
@@ -56,6 +53,10 @@ public class CourseDao {
     private static final String SQL_GET_STUDENT_MARK = "SELECT mark_id FROM course_students_marks WHERE course_id = ? " +
             "AND student_id = ?;";
 
+    private static final String SQL_GET_NUMBER_OF_COURSES = "SELECT COUNT(*) FROM courses WHERE condition_id != ? ";
+
+    private static final String SQL_UPDATE_COURSE_STUDENTS = "UPDATE courses SET number_of_students = ? WHERE id = ?;";
+
     public void save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
         Connection connection = null;
@@ -67,6 +68,7 @@ public class CourseDao {
             preparedStatement.setInt(3, duration);
             preparedStatement.setInt(4, teacherId);
             preparedStatement.setInt(5, conditionId);
+            preparedStatement.setInt(6, 0);
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException ex) {
@@ -77,21 +79,30 @@ public class CourseDao {
         }
     }
 
-    public Set<Course> findAllByConditionNotEqual(int conditionId) {
-        Set<Course> courses = new HashSet<>();
+    public List<Course> findAllByConditionNotEqual(int conditionId, int start, int total, String sortField,
+                                                   String sortDir, String teacherId, String theme) {
+        List<Course> courses = new ArrayList<>();
         PreparedStatement preparedStatement;
         ResultSet resultSet;
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
-            preparedStatement = connection.prepareStatement(SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL);
+            StringBuilder ps = new StringBuilder(SQL_FIND_ALL_BY_CONDITION_NOT_EQUAL);
+            if (teacherId != null && !teacherId.isEmpty()) {
+                ps.append("AND teacher_id = ").append(Integer.parseInt(teacherId)).append(" ");
+            }
+            if (theme != null && !theme.isEmpty()) {
+                ps.append("AND theme = '").append(theme).append("' ");
+            }
+            preparedStatement = connection.prepareStatement(ps + "ORDER BY " +
+                    sortField + " " + sortDir.toUpperCase() + " LIMIT " + (start - 1) + ", " + total + ";");
             preparedStatement.setInt(1, conditionId);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Course course = new Course(resultSet.getLong("id"),
                         resultSet.getString("name"), resultSet.getString("theme"),
                         resultSet.getInt("duration"), resultSet.getInt("teacher_id"),
-                        resultSet.getInt("condition_id"));
+                        resultSet.getInt("condition_id"), resultSet.getInt("number_of_students"));
                 courses.add(course);
             }
             resultSet.close();
@@ -134,7 +145,8 @@ public class CourseDao {
             if (resultSet.next()) {
                 course = new Course(resultSet.getLong("id"), resultSet.getString("name"),
                         resultSet.getString("theme"), resultSet.getInt("duration"),
-                        resultSet.getInt("teacher_id"), resultSet.getInt("condition_id"));
+                        resultSet.getInt("teacher_id"), resultSet.getInt("condition_id"),
+                        resultSet.getInt("number_of_students"));
             }
             resultSet.close();
             preparedStatement.close();
@@ -156,7 +168,8 @@ public class CourseDao {
             preparedStatement.setString(2, theme);
             preparedStatement.setInt(3, duration);
             preparedStatement.setInt(4, teacher_id);
-            preparedStatement.setLong(5, id);
+            preparedStatement.setInt(5, getNumberOfStudents(id));
+            preparedStatement.setLong(6, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException ex) {
@@ -183,6 +196,7 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        updateCourseStudents(course_id);
     }
 
     public boolean checkCourseForStudents(Long courseId, Long studentId) {
@@ -253,7 +267,8 @@ public class CourseDao {
                     Course course = new Course(resultSet1.getLong("id"),
                             resultSet1.getString("name"), resultSet1.getString("theme"),
                             resultSet1.getInt("duration"), resultSet1.getInt("teacher_id"),
-                            resultSet1.getInt("condition_id"));
+                            resultSet1.getInt("condition_id"),
+                            resultSet1.getInt("number_of_students"));
                     courses.add(course);
                 }
             }
@@ -284,7 +299,7 @@ public class CourseDao {
                 Course course = new Course(resultSet.getLong("id"),
                         resultSet.getString("name"), resultSet.getString("theme"),
                         resultSet.getInt("duration"), resultSet.getInt("teacher_id"),
-                        resultSet.getInt("condition_id"));
+                        resultSet.getInt("condition_id"), resultSet.getInt("number_of_students"));
                 courses.add(course);
             }
             resultSet.close();
@@ -389,5 +404,53 @@ public class CourseDao {
             DBManager.getInstance().commitAndClose(connection);
         }
         return mark;
+    }
+
+    public int getNumberOfCourses(int conditionId, String teacherId, String theme) {
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        Connection connection = null;
+        int numberOfCourses = 0;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            StringBuilder ps = new StringBuilder(SQL_GET_NUMBER_OF_COURSES);
+            if (teacherId != null && !teacherId.isEmpty()) {
+                ps.append("AND teacher_id = ").append(Integer.parseInt(teacherId)).append(" ");
+            }
+            if (theme != null && !theme.isEmpty()) {
+                ps.append("AND theme = '").append(theme).append("' ");
+            }
+            preparedStatement = connection.prepareStatement(ps.append(";").toString());
+            preparedStatement.setInt(1, conditionId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                numberOfCourses = resultSet.getInt(1);
+            }
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
+        return numberOfCourses;
+    }
+
+    public void updateCourseStudents(Long id) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_UPDATE_COURSE_STUDENTS);
+            preparedStatement.setInt(1, getNumberOfStudents(id));
+            preparedStatement.setLong(2, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(connection);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(connection);
+        }
     }
 }

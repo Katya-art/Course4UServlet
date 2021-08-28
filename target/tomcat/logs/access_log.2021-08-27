@@ -72,3 +72,4 @@
 0:0:0:0:0:0:0:1 - - [27/Aug/2021:21:36:49 +0300] "GET /course4u/students_courses.jsp?condition=not_started HTTP/1.1" 200 2114 http-bio-8888-exec-5 20
 0:0:0:0:0:0:0:1 - - [27/Aug/2021:21:36:50 +0300] "GET /course4u/students_courses.jsp?condition=in_progress HTTP/1.1" 200 2335 http-bio-8888-exec-6 40
 0:0:0:0:0:0:0:1 - - [27/Aug/2021:21:36:54 +0300] "GET /course4u/students_courses.jsp?condition=completed HTTP/1.1" 200 2495 http-bio-8888-exec-7 51
+0:0:0:0:0:0:0:1 - - [27/Aug/2021:22:05:13 +0300] "GET /course4u/ HTTP/1.1" 200 3300 http-bio-8888-exec-9 184

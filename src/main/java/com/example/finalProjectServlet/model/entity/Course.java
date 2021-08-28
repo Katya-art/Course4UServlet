@@ -16,6 +16,8 @@ public class Course {
 
     private int conditionId;
 
+    private int numberOfStudents;
+
     public Long getId() {
         return id;
     }
@@ -23,13 +25,14 @@ public class Course {
     public Course() {
     }
 
-    public Course(Long id, String name, String theme, int duration, int teacherId, int conditionId) {
+    public Course(Long id, String name, String theme, int duration, int teacherId, int conditionId, int numberOfStudents) {
         this.id = id;
         this.name = name;
         this.theme = theme;
         this.duration = duration;
         this.teacherId = teacherId;
         this.conditionId = conditionId;
+        this.numberOfStudents = numberOfStudents;
     }
 
     public void setId(Long id) {
@@ -78,5 +81,13 @@ public class Course {
 
     public String getTeacherName() {
         return (new UserDao()).findById((long) teacherId).getFullName();
+    }
+
+    public int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    public void setNumberOfStudents(int numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
     }
 }

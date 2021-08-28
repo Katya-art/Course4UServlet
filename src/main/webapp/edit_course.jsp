@@ -27,7 +27,8 @@
         Course course = (new CourseDao()).findById(Long.parseLong(request.getParameter("id")));
         request.setAttribute("course", course);
     %>
-    <form method="POST" action="${contextPath}/edit_course?id=<c:out value='<%=request.getParameter("id")%>'/>"
+    <form method="POST"
+          action="${contextPath}/edit_course?id=<c:out value='<%=request.getParameter("id")%>'/>&page=<c:out value='<%=request.getParameter("page")%>'/>&sortField=<c:out value='<%=request.getParameter("sortField")%>'/>&sortDir=<c:out value='<%=request.getParameter("sortDir")%>'/>&teacher=<c:out value='<%=request.getParameter("teacher")%>'/>&theme=<c:out value='<%=request.getParameter("theme")%>'/>"
           class="form-signin">
         <h2 class="form-heading">Edit course</h2>
 
@@ -35,11 +36,11 @@
         <input name="name" type="text" class="form-control" placeholder="Course name" value="${course.name}"
                autofocus="true">
         <span style="color: #ac2925">${nameError}</span><br/>
-        <input name="theme" type="text" class="form-control" placeholder="Theme" value="${course.theme}">
+        <input name="themeName" type="text" class="form-control" placeholder="Theme" value="${course.theme}">
         <span style="color: #ac2925">${themeError}</span><br/>
         <input name="duration" type="number" class="form-control" placeholder="Duration" value="${course.duration}">
         <span style="color: #ac2925">${durationError}</span><br/>
-        <select id="teacher" name="teacher" title="${course.teacherName}">
+        <select id="teacherId" name="teacherId" title="${course.teacherName}">
             <c:forEach items="<%=(new UserDao()).findAllByRole(3)%>" var="teacher">
                 <c:choose>
                     <c:when test="${teacher.id == course.teacherId}">
