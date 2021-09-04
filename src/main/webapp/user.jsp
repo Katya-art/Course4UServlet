@@ -2,11 +2,14 @@
 <%@ page import="com.example.finalProjectServlet.model.entity.Role" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<fmt:setLocale value="${sessionScope.lang}"/>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>My account</title>
+    <title><fmt:message key="myAccount"/></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
@@ -28,26 +31,26 @@
     <h4 style="text-align: center"><%=Role.getRole(user)%>
     </h4>
     <c:if test="${user.roleId == 1 && user.statusId == 2}">
-        <h5 style="text-align: center">Your account was blocked</h5>
+        <h5 style="text-align: center"><fmt:message key="accountWasBlocked"/></h5>
     </c:if>
     <table class="table">
         <tbody>
         <tr>
-            <td>Full name</td>
+            <td><fmt:message key="fullName"/></td>
             <td>${user.fullName}</td>
         </tr>
         <tr>
-            <td>Email</td>
+            <td><fmt:message key="email"/></td>
             <td>${user.email}</td>
         </tr>
         </tbody>
     </table>
 
     <span style="float: right">
-    <a href="?lang=en">en</a>
+    <a href="?sessionLocale=en">en</a>
     |
-    <a href="?lang=ua">ua</a>
-</span>
+    <a href="?sessionLocale=ua">ua</a>
+    </span>
 
 </div>
 <!-- /container -->

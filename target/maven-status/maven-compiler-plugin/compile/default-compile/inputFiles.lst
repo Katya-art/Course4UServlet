@@ -9,6 +9,7 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/DBManager.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/RegisterCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/AddCourseCommand.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/filters/SessionLocaleFilter.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/LoginCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Status.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/EditCourseCommand.java

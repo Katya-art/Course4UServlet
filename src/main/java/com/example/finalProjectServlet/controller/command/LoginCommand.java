@@ -35,9 +35,9 @@ public class LoginCommand implements Command {
 
         if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
             errorMessage = "Login/password cannot be empty";
-            request.setAttribute("errorMessage", errorMessage);
+            request.setAttribute("error", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return forward;
+            return "login.jsp";
         }
 
         User user = new UserDao().findByUsername(username);
@@ -45,16 +45,16 @@ public class LoginCommand implements Command {
 
         if (user == null || !password.equals(user.getPassword())) {
             errorMessage = "Cannot find user with such login/password";
-            request.setAttribute("errorMessage", errorMessage);
+            request.setAttribute("error", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return forward;
+            return "login.jsp";
         }
 
         if (CommandUtility.checkUserIsLogged(request, username)) {
             errorMessage = "This user already in use";
             request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
-            return forward;
+            return "login.jsp";
         }
 
         Role userRole = Role.getRole(user);

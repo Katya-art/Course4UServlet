@@ -2,11 +2,14 @@
 <%@ page import="com.example.finalProjectServlet.model.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<fmt:setLocale value="${sessionScope.lang}"/>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>My courses</title>
+    <title><fmt:message key="myCourses"/></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
@@ -31,18 +34,21 @@
     request.setAttribute("conditionId", conditionId);
 %>
 <div class="container">
-    <h2><a href="${pageContext.request.contextPath}/students_courses.jsp?condition=not_started">Not started</a> |
-        <a href="${pageContext.request.contextPath}/students_courses.jsp?condition=in_progress">In progress</a> |
-        <a href="${pageContext.request.contextPath}/students_courses.jsp?condition=completed">Completed</a></h2>
+    <h2><a href="${pageContext.request.contextPath}/students_courses.jsp?condition=not_started"><fmt:message
+            key="notStarted"/></a> |
+        <a href="${pageContext.request.contextPath}/students_courses.jsp?condition=in_progress"><fmt:message
+                key="inProgress"/></a> |
+        <a href="${pageContext.request.contextPath}/students_courses.jsp?condition=completed"><fmt:message
+                key="completed"/></a></h2>
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Course name</th>
-            <th scope="col">Teacher name</th>
-            <th scope="col">Theme</th>
-            <th scope="col">Duration</th>
+            <th scope="col"><fmt:message key="courseName"/></th>
+            <th scope="col"><fmt:message key="teacherName"/></th>
+            <th scope="col"><fmt:message key="theme"/></th>
+            <th scope="col"><fmt:message key="duration"/></th>
             <c:if test='<%=request.getParameter("condition").equals("completed")%>'>
-                <th scope="col">Mark</th>
+                <th scope="col"><fmt:message key="grade"/></th>
             </c:if>
         </tr>
         </thead>
@@ -66,13 +72,11 @@
         </c:forEach>
         </tbody>
     </table>
-
     <span style="float: right">
-    <a href="?lang=en">en</a>
+    <a href="?sessionLocale=en">en</a>
     |
-    <a href="?lang=ua">ua</a>
-</span>
-
+    <a href="?sessionLocale=ua">ua</a>
+    </span>
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

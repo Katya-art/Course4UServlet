@@ -2,11 +2,14 @@
 <%@ page import="com.example.finalProjectServlet.model.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<fmt:setLocale value="${sessionScope.lang}"/>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>My courses</title>
+    <title><fmt:message key="myCourses"/></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
@@ -23,8 +26,8 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Course name</th>
-            <th scope="col">Number of students</th>
+            <th scope="col"><fmt:message key="courseName"/></th>
+            <th scope="col"><fmt:message key="numberOfStudents"/></th>
         </tr>
         </thead>
         <tbody>
@@ -39,13 +42,13 @@
                 </td>
                 <c:if test="${course.conditionId == 1}">
                     <td><a href="${pageContext.request.contextPath}/start_course?id=<c:out value="${course.id}"/>"
-                           class="btn btn-info mt-4">Start course</a></td>
+                           class="btn btn-info mt-4"><fmt:message key="startCourse"/></a></td>
                 </c:if>
                 <c:if test="${course.conditionId == 2}">
                     <td><a href="${pageContext.request.contextPath}/grade_journal.jsp?id=<c:out value="${course.id}"/>"
-                           class="btn btn-info mt-4">Gradebook</a></td>
+                           class="btn btn-info mt-4"><fmt:message key="gradebook"/></a></td>
                     <td><a href="${pageContext.request.contextPath}/finish_course?id=<c:out value="${course.id}"/>"
-                           class="btn btn-info mt-4">Finish course</a></td>
+                           class="btn btn-info mt-4"><fmt:message key="finishCourse"/></a></td>
                 </c:if>
             </tr>
         </c:forEach>
@@ -53,10 +56,10 @@
     </table>
 
     <span style="float: right">
-    <a href="?lang=en">en</a>
+    <a href="?sessionLocale=en">en</a>
     |
-    <a href="?lang=ua">ua</a>
-</span>
+    <a href="?sessionLocale=ua">ua</a>
+    </span>
 
 </div>
 <!-- /container -->

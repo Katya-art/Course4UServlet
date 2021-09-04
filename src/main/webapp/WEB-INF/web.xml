@@ -1,5 +1,29 @@
 <web-app version="3.0">
     <display-name>Archetype Created Web Application</display-name>
+
+    <!--============================================================
+	i18n support
+    =============================================================-->
+    <!-- this way we set the resource bundle name -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>messages</param-value>
+    </context-param>
+
+    <!-- this way we set the default locale (optional) -->
+    <!-- the (preferable) browser's locale will be used if we don't set the default locale -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>en</param-value>
+    </context-param>
+
+    <!-- supported locales -->
+    <context-param>
+        <param-name>locales</param-name>
+        <param-value>en ua</param-value>
+    </context-param>
+
+
     <servlet>
         <servlet-name>Servl</servlet-name>
         <servlet-class>com.example.finalProjectServlet.controller.Servlet</servlet-class>

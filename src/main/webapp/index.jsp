@@ -1,12 +1,16 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.finalProjectServlet.model.dao.CourseDao" %>
 <%@ page import="com.example.finalProjectServlet.model.entity.User" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+<fmt:setLocale value="${sessionScope.lang}"/>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Welcome</title>
+    <title>Course4U</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
@@ -55,15 +59,18 @@
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col"><a href="index.jsp?page=${currentPage}&sortField=name&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}">Course
-                name</a></th>
-            <th scope="col">Teacher name</th>
-            <th scope="col">Theme</th>
-            <th scope="col"><a href="index.jsp?page=${currentPage}&sortField=duration&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}">Duration</a>
+            <th scope="col"><a
+                    href="index.jsp?page=${currentPage}&sortField=name&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}"><fmt:message
+                    key="courseName"/></a></th>
+            <th scope="col"><fmt:message key="teacherName"/></th>
+            <th scope="col"><fmt:message key="theme"/></th>
+            <th scope="col"><a
+                    href="index.jsp?page=${currentPage}&sortField=duration&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}"><fmt:message
+                    key="duration"/></a>
             </th>
             <th scope="col"><a
-                    href="index.jsp?page=${currentPage}&sortField=number_of_students&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}">Number
-                of students</a></th>
+                    href="index.jsp?page=${currentPage}&sortField=number_of_students&sortDir=${reverseSortDir}&teacher=${teacher}&theme=${theme}"><fmt:message
+                    key="numberOfStudents"/></a></th>
         </tr>
         </thead>
         <tbody>
@@ -74,17 +81,22 @@
             <jsp:setProperty name="currentCourse" property="id" value="${course.id}"/>
             <tr>
                 <td>${course.name}</td>
-                <td><a href="index.jsp?page=1&sortField=duration&sortDir=${sortDir}&teacher=${course.teacherId}&theme=${theme}">${course.teacherName}</a></td>
-                <td><a href="index.jsp?page=1&sortField=duration&sortDir=${sortDir}&teacher=${teacher}&theme=${course.theme}">${course.theme}</a></td>
+                <td>
+                    <a href="index.jsp?page=1&sortField=duration&sortDir=${sortDir}&teacher=${course.teacherId}&theme=${theme}">${course.teacherName}</a>
+                </td>
+                <td>
+                    <a href="index.jsp?page=1&sortField=duration&sortDir=${sortDir}&teacher=${teacher}&theme=${course.theme}">${course.theme}</a>
+                </td>
                 <td>${course.duration}</td>
                 <td>${course.numberOfStudents}</td>
                 <c:if test='<%=session.getAttribute("user") != null &&
                 ((User)session.getAttribute("user")).getRoleId() == 2%>'>
-                    <td><a href="${pageContext.request.contextPath}/edit_course.jsp?id=<c:out value="${course.id}"/>&page=${currentPage}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}"
-                           class="btn btn-info mt-4">Edit</a></td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/edit_course.jsp?id=<c:out value="${course.id}"/>&page=${currentPage}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}"
+                           class="btn btn-info mt-4"><fmt:message key="edit"/></a></td>
                     <td>
                         <a href="${pageContext.request.contextPath}/delete_course?id=<c:out value='${course.id}'/>&page=${currentPage}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}"
-                           class="btn btn-danger mt-4">Delete</a></td>
+                           class="btn btn-danger mt-4"><fmt:message key="delete"/></a></td>
                 </c:if>
                 <c:if test='<%=session.getAttribute("user") != null &&
                 ((User)session.getAttribute("user")).getRoleId() == 1%>'>
@@ -95,16 +107,16 @@
                                 ((User)session.getAttribute("user")).getId())%>'>
                                     <td>
                                         <a href="${pageContext.request.contextPath}/enroll_course?course_id=<c:out value='${course.id}'/>&student_id=<c:out value='<%=((User)session.getAttribute("user")).getId()%>'/>"
-                                           class="btn btn-primary">Enroll</a></td>
+                                           class="btn btn-primary"><fmt:message key="enroll"/></a></td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td>You are already enrolled in this course</td>
+                                    <td><fmt:message key="alreadyEnrolled"/></td>
                                 </c:otherwise>
                             </c:choose>
 
                         </c:when>
                         <c:otherwise>
-                            <td>Your account was blocked by admin</td>
+                            <td><fmt:message key="accountWasBlocked"/></td>
                         </c:otherwise>
                     </c:choose>
 
@@ -116,9 +128,6 @@
 
     <c:if test="${totalPages > 1}">
         <div class="row col-sm-10">
-            <div class="col-sm-2">
-                Total rows: ${totalItems}
-            </div>
             <div class="col-sm-1">
                 <c:forEach var="i" begin="1" end="${totalPages}">
                     <c:choose>
@@ -131,19 +140,26 @@
             <div class="col-sm-1">
                 <c:choose>
                     <c:when test="${currentPage < totalPages}"><a
-                            href="index.jsp?page=${currentPage + 1}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}">Next</a></c:when>
+                            href="index.jsp?page=${currentPage + 1}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}"><fmt:message
+                            key="next"/></a></c:when>
                     <c:otherwise>Next</c:otherwise>
                 </c:choose>
             </div>
             <div class="col-sm-1">
                 <c:choose>
                     <c:when test="${currentPage < totalPages}"><a
-                            href="index.jsp?page=${totalPages}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}">Last</a></c:when>
+                            href="index.jsp?page=${totalPages}&sortField=${sortField}&sortDir=${sortDir}&teacher=${teacher}&theme=${theme}"><fmt:message
+                            key="last"/></a></c:when>
                     <c:otherwise>Last</c:otherwise>
                 </c:choose>
             </div>
         </div>
     </c:if>
+    <span style="float: right">
+    <a href="?sessionLocale=en">en</a>
+    |
+    <a href="?sessionLocale=ua">ua</a>
+    </span>
 </div>
 <!-- /container -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

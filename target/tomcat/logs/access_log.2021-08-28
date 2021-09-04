@@ -383,3 +383,4 @@
 0:0:0:0:0:0:0:1 - - [28/Aug/2021:21:21:09 +0300] "GET /course4u/index.jsp?page=1&sortField=duration&sortDir=asc&teacher=18&theme=Information%20Technology HTTP/1.1" 200 3054 http-bio-8888-exec-4 76
 0:0:0:0:0:0:0:1 - - [28/Aug/2021:21:21:13 +0300] "GET /course4u/index.jsp?page=1&sortField=duration&sortDir=desc&teacher=18&theme=Information%20Technology HTTP/1.1" 200 3055 http-bio-8888-exec-5 59
 0:0:0:0:0:0:0:1 - - [28/Aug/2021:21:21:14 +0300] "GET /course4u/index.jsp?page=1&sortField=duration&sortDir=asc&teacher=18&theme=Information%20Technology HTTP/1.1" 200 3054 http-bio-8888-exec-6 60
+0:0:0:0:0:0:0:1 - - [28/Aug/2021:21:25:27 +0300] "GET /course4u/ HTTP/1.1" 200 7654 http-bio-8888-exec-8 208
