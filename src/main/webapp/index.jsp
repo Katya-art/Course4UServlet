@@ -4,6 +4,7 @@
 <%@ page import="com.example.finalProjectServlet.model.entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "ex" uri = "/WEB-INF/custom.tld"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -116,7 +117,7 @@
 
                         </c:when>
                         <c:otherwise>
-                            <td><fmt:message key="accountWasBlocked"/></td>
+                            <td style="color: #ac2925"><ex:CustomTag><fmt:message key="accountWasBlocked"/></ex:CustomTag></td>
                         </c:otherwise>
                     </c:choose>
 

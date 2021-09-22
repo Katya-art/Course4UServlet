@@ -3,6 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "ex" uri = "/WEB-INF/custom.tld"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -28,10 +29,9 @@
 %>
 <div class="container">
     <h2 style="text-align: center">${user.username}</h2>
-    <h4 style="text-align: center"><%=Role.getRole(user)%>
-    </h4>
+    <h4 style="text-align: center"><%=Role.getRole(user)%></h4>
     <c:if test="${user.roleId == 1 && user.statusId == 2}">
-        <h5 style="text-align: center"><fmt:message key="accountWasBlocked"/></h5>
+        <h5 style="text-align: center; color: #ac2925"><ex:CustomTag><fmt:message key="accountWasBlocked"/></ex:CustomTag></h5>
     </c:if>
     <table class="table">
         <tbody>

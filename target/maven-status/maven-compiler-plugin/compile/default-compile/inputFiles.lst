@@ -17,10 +17,12 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/dao/UserDao.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/Command.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Mark.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/filters/CommandAccessFilter.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/ChangeStudentsStatusCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Condition.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/filters/EncodingFilter.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/FinishCourseCommand.java
+/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/CustomTag.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/dao/CourseDao.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/MainCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Role.java

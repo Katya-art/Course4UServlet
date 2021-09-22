@@ -23,7 +23,10 @@ public class RegisterCommand implements Command {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
-        Locale locale = new Locale((String) request.getSession().getAttribute("lang"));
+        Locale locale = new Locale("en");
+        if (request.getSession().getAttribute("lang") != null) {
+            locale = new Locale((String) request.getSession().getAttribute("lang"));
+        }
 
         ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
 

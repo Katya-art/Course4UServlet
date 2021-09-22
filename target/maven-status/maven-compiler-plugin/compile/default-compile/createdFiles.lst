@@ -13,11 +13,13 @@ com/example/finalprojectservlet/controller/command/StartCourseCommand.class
 com/example/finalprojectservlet/controller/command/DeleteCourseCommand.class
 com/example/finalprojectservlet/controller/command/RegisterCommand.class
 com/example/finalprojectservlet/model/DBManager.class
+com/example/finalprojectservlet/CustomTag.class
 com/example/finalprojectservlet/controller/filters/EncodingFilter.class
 com/example/finalprojectservlet/controller/command/AddCourseCommand.class
 com/example/finalprojectservlet/controller/command/ExceptionCommand.class
 com/example/finalprojectservlet/model/entity/Role.class
 com/example/finalprojectservlet/controller/listener/SessionListener.class
+com/example/finalprojectservlet/controller/filters/CommandAccessFilter.class
 com/example/finalprojectservlet/controller/command/MainCommand.class
 com/example/finalprojectservlet/controller/command/EditCourseCommand.class
 com/example/finalprojectservlet/controller/command/EnrollCourseCommand.class

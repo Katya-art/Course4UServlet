@@ -1,9 +1,22 @@
-<web-app version="3.0">
-    <display-name>Archetype Created Web Application</display-name>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!--============================================================
-	i18n support
-    =============================================================-->
+<!--============================================================
+	Deployment Descriptor: web.xml
+=============================================================-->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+
+    <display-name>Course4U</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+<!--============================================================
+    i18n support
+=============================================================-->
     <!-- this way we set the resource bundle name -->
     <context-param>
         <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
@@ -23,17 +36,22 @@
         <param-value>en ua</param-value>
     </context-param>
 
-
+<!--============================================================
+        Controller
+=============================================================-->
     <servlet>
-        <servlet-name>Servl</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <servlet-class>com.example.finalProjectServlet.controller.Servlet</servlet-class>
-        <!--<load-on-startup>1</load-on-startup>-->
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>Servl</servlet-name>
+        <servlet-name>Controller</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+<!--============================================================
+	Encoding support filter
+=============================================================-->
     <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>com.example.finalProjectServlet.controller.filters.EncodingFilter</filter-class>
@@ -42,11 +60,15 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+<!--============================================================
+    Auth filter
+=============================================================-->
     <filter>
         <filter-name>AuthFilter</filter-name>
         <filter-class>com.example.finalProjectServlet.controller.filters.AuthFilter</filter-class>
@@ -56,19 +78,70 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+<!--============================================================
+	Security filter.
+	1) admin: admin commands
+	2) teacher: teacher commands
+	3) student: student commands
+	4) commons: commands for all roles
+	5) out-of-control: commands without access control
+	Delimiter - space/tab
+=============================================================-->
+        <filter>
+            <filter-name>CommandAccessFilter</filter-name>
+            <filter-class>com.example.finalProjectServlet.controller.filters.CommandAccessFilter</filter-class>
+            <init-param>
+                <param-name>admin</param-name>
+                <param-value>add_course students_list change_student_status add_course delete_course edit_course</param-value>
+            </init-param>
+            <init-param>
+                <param-name>teacher</param-name>
+                <param-value>teachers_courses start_course save_journal finish_course</param-value>
+            </init-param>
+            <init-param>
+                <param-name>student</param-name>
+                <param-value>students_courses enroll_course</param-value>
+            </init-param>
+            <init-param>
+                <param-name>common</param-name>
+                <param-value>logout</param-value>
+            </init-param>
+            <init-param>
+                <param-name>out-of-control</param-name>
+                <param-value>index login register</param-value>
+            </init-param>
+        </filter>
+
+        <filter-mapping>
+            <filter-name>CommandAccessFilter</filter-name>
+            <servlet-name>Controller</servlet-name>
+        </filter-mapping>
+
+<!--============================================================
+	Session listener
+=============================================================-->
     <listener>
         <listener-class>
             com.example.finalProjectServlet.controller.listener.SessionListener
         </listener-class>
     </listener>
 
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
+<!--============================================================
+	Error page
+=============================================================-->
     <error-page>
         <exception-type>java.lang.Exception</exception-type>
         <location>/WEB-INF/error.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/errors/403.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/errors/404.jsp</location>
     </error-page>
 
 </web-app>

@@ -1,0 +1,7 @@
+2021-09-07 15:11 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
+2021-09-07 15:11 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], STUDENT=[students_courses, enroll_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course]}
+2021-09-07 15:11 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
+2021-09-07 15:11 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
+2021-09-07 15:11 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
+2021-09-07 18:05 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
+2021-09-07 18:05 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
