@@ -57,7 +57,7 @@ public class CourseDao {
 
     private static final String SQL_UPDATE_COURSE_STUDENTS = "UPDATE courses SET number_of_students = ? WHERE id = ?;";
 
-    public void save(String name, String theme, int duration, int teacherId, int conditionId)
+    public boolean save(String name, String theme, int duration, int teacherId, int conditionId)
             throws ClassNotFoundException {
         Connection connection = null;
         try {
@@ -77,6 +77,7 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
     public List<Course> findAllByConditionNotEqual(int conditionId, int start, int total, String sortField,
@@ -116,7 +117,7 @@ public class CourseDao {
         return courses;
     }
 
-    public void deleteCourse(Long id) {
+    public Boolean deleteCourse(Long id) {
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
@@ -130,6 +131,7 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
     public Course findById(Long id) {
@@ -159,7 +161,7 @@ public class CourseDao {
         return course;
     }
 
-    public void updateCourse(Long id, String name, String theme, int duration, int teacher_id) {
+    public boolean updateCourse(Long id, String name, String theme, int duration, int teacher_id) {
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
@@ -178,9 +180,10 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
-    public void addStudentToCourse(Long course_id, Long student_id, Long mark_id) {
+    public boolean addStudentToCourse(Long course_id, Long student_id, Long mark_id) {
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
@@ -197,6 +200,7 @@ public class CourseDao {
             DBManager.getInstance().commitAndClose(connection);
         }
         updateCourseStudents(course_id);
+        return true;
     }
 
     public boolean checkCourseForStudents(Long courseId, Long studentId) {
@@ -313,7 +317,7 @@ public class CourseDao {
         return courses;
     }
 
-    public void updateCourseCondition(Long course_id, int condition_id) {
+    public boolean updateCourseCondition(Long course_id, int condition_id) {
         Connection connection = null;
         try {
             connection = DBManager.getInstance().getConnection();
@@ -328,6 +332,7 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
     public Map<User, Mark> findCourseStudentsAndMarks(Long id) {
@@ -359,14 +364,13 @@ public class CourseDao {
         return studentsMarks;
     }
 
-    public void saveStudentsMarks(Long course_id, String[] students, String[] marks) {
+    public boolean saveStudentsMarks(Long course_id, String[] students, String[] marks) {
         Connection connection = null;
         UserDao userDao = new UserDao();
         try {
             connection = DBManager.getInstance().getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_SAVE_STUDENT_MARK);
             for (int i = 0; i < students.length; i++) {
-                System.out.println("Mark id: " + Mark.getMarkId(marks[i]));
                 preparedStatement.setInt(1, Mark.getMarkId(marks[i]));
                 preparedStatement.setLong(2, course_id);
                 preparedStatement.setLong(3, userDao.findByUsername(students[i]).getId());
@@ -379,6 +383,7 @@ public class CourseDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
     public Mark findStudentMark(Long courseId, Long studentId) {

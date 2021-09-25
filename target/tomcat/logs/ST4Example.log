@@ -1,175 +1,19 @@
-2021-09-22 15:25 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:25 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course]}
-2021-09-22 15:25 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:25 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:25 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:26 [TRACE]       CommandAccessFilter:    80 - Access map --> {TEACHER=[teachers_courses, start_course, save_journal, finish_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], STUDENT=[students_courses, enroll_course]}
-2021-09-22 15:26 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:26 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:26 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:26 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:26 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
-2021-09-22 15:26 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@248c0e85
-2021-09-22 15:26 [TRACE]              LoginCommand:    61 - userRole --> ADMIN
-2021-09-22 15:26 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@248c0e85
-2021-09-22 15:26 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> ADMIN
-2021-09-22 15:26 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@248c0e85 logged as admin
-2021-09-22 15:26 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:31 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:31 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:31 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:31 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course]}
-2021-09-22 15:31 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:31 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:31 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:34 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:34 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:34 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:34 [TRACE]       CommandAccessFilter:    80 - Access map --> {STUDENT=[students_courses, enroll_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course]}
-2021-09-22 15:34 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:34 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:34 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:35 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:35 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:35 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:35 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
-2021-09-22 15:35 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@32bbff69
-2021-09-22 15:35 [TRACE]              LoginCommand:    61 - userRole --> ADMIN
-2021-09-22 15:35 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@32bbff69
-2021-09-22 15:35 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> ADMIN
-2021-09-22 15:35 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@32bbff69 logged as admin
-2021-09-22 15:35 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:37 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course]}
-2021-09-22 15:37 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:37 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:37 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:37 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:37 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
-2021-09-22 15:37 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@65eb9095
-2021-09-22 15:37 [TRACE]              LoginCommand:    61 - userRole --> ADMIN
-2021-09-22 15:37 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@65eb9095
-2021-09-22 15:37 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> ADMIN
-2021-09-22 15:37 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@65eb9095 logged as admin
-2021-09-22 15:37 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:38 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:38 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:40 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:40 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:40 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:40 [TRACE]       CommandAccessFilter:    80 - Access map --> {TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course]}
-2021-09-22 15:40 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:40 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:40 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:41 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:41 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:41 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:41 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
-2021-09-22 15:41 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@48906631
-2021-09-22 15:41 [ERROR]              LoginCommand:    49 - errorMessage --> Cannot find user with such login/password
-2021-09-22 15:41 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:41 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:41 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:41 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
-2021-09-22 15:41 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@15574480
-2021-09-22 15:41 [TRACE]              LoginCommand:    61 - userRole --> ADMIN
-2021-09-22 15:41 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@15574480
-2021-09-22 15:41 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> ADMIN
-2021-09-22 15:41 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@15574480 logged as admin
-2021-09-22 15:41 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:42 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:42 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:42 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:42 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:43 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:43 [TRACE]       CommandAccessFilter:    80 - Access map --> {TEACHER=[teachers_courses, start_course, save_journal, finish_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], STUDENT=[students_courses, enroll_course]}
-2021-09-22 15:43 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:43 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:43 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:43 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:43 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:43 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:43 [TRACE]              LoginCommand:    28 - Request parameter: loging --> ElaReader
-2021-09-22 15:43 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@54e76556
-2021-09-22 15:43 [TRACE]              LoginCommand:    61 - userRole --> STUDENT
-2021-09-22 15:43 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@54e76556
-2021-09-22 15:43 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> STUDENT
-2021-09-22 15:43 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@54e76556 logged as student
-2021-09-22 15:43 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:46 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:46 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:46 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:46 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], STUDENT=[students_courses, enroll_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course]}
-2021-09-22 15:46 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:46 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:46 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:47 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:47 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:47 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:47 [TRACE]              LoginCommand:    28 - Request parameter: loging --> ElaReader
-2021-09-22 15:47 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@1468e20f
-2021-09-22 15:47 [TRACE]              LoginCommand:    61 - userRole --> STUDENT
-2021-09-22 15:47 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@1468e20f
-2021-09-22 15:47 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> STUDENT
-2021-09-22 15:47 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@1468e20f logged as student
-2021-09-22 15:47 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:49 [TRACE]       CommandAccessFilter:    80 - Access map --> {STUDENT=[students_courses, enroll_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course]}
-2021-09-22 15:49 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:49 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:49 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:49 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:49 [TRACE]              LoginCommand:    28 - Request parameter: loging --> ElaReader
-2021-09-22 15:49 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@60b137e0
-2021-09-22 15:49 [TRACE]              LoginCommand:    61 - userRole --> STUDENT
-2021-09-22 15:49 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@60b137e0
-2021-09-22 15:49 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> STUDENT
-2021-09-22 15:49 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@60b137e0 logged as student
-2021-09-22 15:49 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:50 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:50 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:50 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:50 [TRACE]       CommandAccessFilter:    80 - Access map --> {TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course]}
-2021-09-22 15:50 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:50 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:50 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:51 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:51 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:51 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:51 [TRACE]              LoginCommand:    28 - Request parameter: loging --> ElaReader
-2021-09-22 15:51 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@dd4b77d
-2021-09-22 15:51 [TRACE]              LoginCommand:    61 - userRole --> STUDENT
-2021-09-22 15:51 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@dd4b77d
-2021-09-22 15:51 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> STUDENT
-2021-09-22 15:51 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@dd4b77d logged as student
-2021-09-22 15:51 [DEBUG]              LoginCommand:    74 - Command finished
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
-2021-09-22 15:52 [TRACE]       CommandAccessFilter:    80 - Access map --> {TEACHER=[teachers_courses, start_course, save_journal, finish_course], STUDENT=[students_courses, enroll_course], ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course]}
-2021-09-22 15:52 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
-2021-09-22 15:52 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    35 - Filter starts
-2021-09-22 15:52 [DEBUG]       CommandAccessFilter:    38 - Filter finished
-2021-09-22 15:52 [DEBUG]              LoginCommand:    22 - Command starts
-2021-09-22 15:52 [TRACE]              LoginCommand:    28 - Request parameter: loging --> ElaReader
-2021-09-22 15:52 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@dcd5e8d
-2021-09-22 15:52 [TRACE]              LoginCommand:    61 - userRole --> STUDENT
-2021-09-22 15:52 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@dcd5e8d
-2021-09-22 15:52 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> STUDENT
-2021-09-22 15:52 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@dcd5e8d logged as student
-2021-09-22 15:52 [DEBUG]              LoginCommand:    74 - Command finished
+2021-09-23 00:03 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
+2021-09-23 00:03 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished
+2021-09-23 00:04 [DEBUG]       CommandAccessFilter:    74 - Filter initialization starts
+2021-09-23 00:04 [TRACE]       CommandAccessFilter:    80 - Access map --> {ADMIN=[add_course, students_list, change_student_status, add_course, delete_course, edit_course], STUDENT=[students_courses, enroll_course], TEACHER=[teachers_courses, start_course, save_journal, finish_course]}
+2021-09-23 00:04 [TRACE]       CommandAccessFilter:    84 - Common commands --> [logout]
+2021-09-23 00:04 [TRACE]       CommandAccessFilter:    88 - Out of control commands --> [index, login, register]
+2021-09-23 00:04 [DEBUG]       CommandAccessFilter:    90 - Filter initialization finished
+2021-09-23 00:04 [DEBUG]       CommandAccessFilter:    35 - Filter starts
+2021-09-23 00:04 [DEBUG]       CommandAccessFilter:    38 - Filter finished
+2021-09-23 00:04 [DEBUG]              LoginCommand:    22 - Command starts
+2021-09-23 00:04 [TRACE]              LoginCommand:    28 - Request parameter: loging --> KaterynaKravchenko
+2021-09-23 00:04 [TRACE]              LoginCommand:    44 - Found in DB: user --> com.example.finalProjectServlet.model.entity.User@432c32bb
+2021-09-23 00:04 [TRACE]              LoginCommand:    61 - userRole --> ADMIN
+2021-09-23 00:04 [TRACE]              LoginCommand:    66 - Set the session attribute: user --> com.example.finalProjectServlet.model.entity.User@432c32bb
+2021-09-23 00:04 [TRACE]              LoginCommand:    69 - Set the session attribute: userRole --> ADMIN
+2021-09-23 00:04 [ INFO]              LoginCommand:    71 - User com.example.finalProjectServlet.model.entity.User@432c32bb logged as admin
+2021-09-23 00:04 [DEBUG]              LoginCommand:    74 - Command finished
+2021-09-23 16:01 [DEBUG]       CommandAccessFilter:    29 - Filter destruction starts
+2021-09-23 16:01 [DEBUG]       CommandAccessFilter:    31 - Filter destruction finished

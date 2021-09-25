@@ -23,7 +23,7 @@ public class UserDao {
 
     private static final String SQL_UPDATE_USER_STATUS = "UPDATE users SET status_id=? WHERE id=?";
 
-    public void save(String fullName, String username, String email, String password, int roleId, int statusId)
+    public boolean save(String fullName, String username, String email, String password, int roleId, int statusId)
             throws ClassNotFoundException {
         Connection connection = null;
         try {
@@ -43,6 +43,7 @@ public class UserDao {
         } finally {
             DBManager.getInstance().commitAndClose(connection);
         }
+        return true;
     }
 
     public User findByUsername(String username) {
@@ -157,7 +158,7 @@ public class UserDao {
         return users;
     }
 
-    public void updateUserStatus(Long id, int statusId) {
+    public boolean updateUserStatus(Long id, int statusId) {
         Connection con = null;
         try {
             con = DBManager.getInstance().getConnection();
@@ -172,5 +173,6 @@ public class UserDao {
         } finally {
             DBManager.getInstance().commitAndClose(con);
         }
+        return true;
     }
 }

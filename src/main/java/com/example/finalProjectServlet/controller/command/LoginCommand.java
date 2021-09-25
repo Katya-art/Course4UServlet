@@ -5,16 +5,18 @@ import com.example.finalProjectServlet.model.entity.Role;
 import com.example.finalProjectServlet.model.entity.User;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 public class LoginCommand implements Command {
 
-    private static final long serialVersionUID = -3071536593627692473L;
+    private final UserDao userDao;
 
     private static final Logger log = Logger.getLogger(LoginCommand.class);
+
+    public LoginCommand(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -40,7 +42,7 @@ public class LoginCommand implements Command {
             return "login.jsp";
         }
 
-        User user = new UserDao().findByUsername(username);
+        User user = userDao.findByUsername(username);
         log.trace("Found in DB: user --> " + user);
 
         if (user == null || !password.equals(user.getPassword())) {
@@ -69,7 +71,6 @@ public class LoginCommand implements Command {
         log.trace("Set the session attribute: userRole --> " + userRole);
 
         log.info("User " + user + " logged as " + userRole.toString().toLowerCase());
-
 
         log.debug("Command finished");
         return forward;

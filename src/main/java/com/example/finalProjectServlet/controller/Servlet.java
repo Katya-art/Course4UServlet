@@ -21,13 +21,12 @@ public class Servlet extends HttpServlet {
 
     public void init(ServletConfig servletConfig){
 
-        servletConfig.getServletContext()
-                .setAttribute("loggedUsers", new HashSet<String>());
+        servletConfig.getServletContext().setAttribute("loggedUsers", new HashSet<String>());
 
         commands.put("index", new MainCommand());
         commands.put("register", new RegisterCommand(new UserDao()));
         commands.put("logout", new LogOutCommand());
-        commands.put("login", new LoginCommand());
+        commands.put("login", new LoginCommand(new UserDao()));
         commands.put("students_list", new GetStudentsListCommand(new UserDao()));
         commands.put("change_student_status", new ChangeStudentsStatusCommand(new UserDao()));
         commands.put("add_course", new AddCourseCommand(new CourseDao()));
@@ -56,7 +55,6 @@ public class Servlet extends HttpServlet {
         String path = request.getRequestURI();
         path = path.replaceAll(".*/course4u/" , "");
         Command command = commands.getOrDefault(path, (r)->"/index.jsp");
-        System.out.println("processRequest method");
         String page = command.execute(request);
         //request.getRequestDispatcher(page).forward(request,response);
         if(page.contains("redirect:")){

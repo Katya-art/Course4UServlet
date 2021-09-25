@@ -8,8 +8,6 @@ import org.apache.log4j.Logger;
 
 public class LogOutCommand implements Command {
 
-    private static final long serialVersionUID = -2785976616686657267L;
-
     private static final Logger log = Logger.getLogger(LogOutCommand.class);
 
     @Override

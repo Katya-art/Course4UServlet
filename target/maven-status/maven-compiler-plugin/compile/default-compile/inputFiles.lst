@@ -13,7 +13,6 @@
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/LoginCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Status.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/EditCourseCommand.java
-/Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/ExceptionCommand.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/dao/UserDao.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/controller/command/Command.java
 /Users/katerinakravchenko/IdeaProjects/FinalProjectServlet/src/main/java/com/example/finalProjectServlet/model/entity/Mark.java
