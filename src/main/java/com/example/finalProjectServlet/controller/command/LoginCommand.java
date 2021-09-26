@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginCommand implements Command {
 
@@ -32,11 +34,17 @@ public class LoginCommand implements Command {
         String password = request.getParameter("password");
 
         // error handler
-        String errorMessage = null;
-        String forward = "/WEB-INF/error.jsp";
+        String errorMessage;
+        String forward;
+        Locale locale = new Locale("en");
+        if (request.getSession().getAttribute("lang") != null) {
+            locale = new Locale((String) request.getSession().getAttribute("lang"));
+        }
+
+        ResourceBundle messages = ResourceBundle.getBundle("messages", locale);
 
         if (username == null || password == null || username.isEmpty() || password.isEmpty()) {
-            errorMessage = "Login/password cannot be empty";
+            errorMessage = messages.getString("empty");
             request.setAttribute("error", errorMessage);
             log.error("errorMessage --> " + errorMessage);
             return "login.jsp";
@@ -46,14 +54,14 @@ public class LoginCommand implements Command {
         log.trace("Found in DB: user --> " + user);
 
         if (user == null || !password.equals(user.getPassword())) {
-            errorMessage = "Cannot find user with such login/password";
+            errorMessage = messages.getString("incorrect");
             request.setAttribute("error", errorMessage);
             log.error("errorMessage --> " + errorMessage);
             return "login.jsp";
         }
 
         if (CommandUtility.checkUserIsLogged(request, username)) {
-            errorMessage = "This user already in use";
+            errorMessage = messages.getString("alreadyInUse");
             request.setAttribute("errorMessage", errorMessage);
             log.error("errorMessage --> " + errorMessage);
             return "login.jsp";

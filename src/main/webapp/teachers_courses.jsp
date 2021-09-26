@@ -31,9 +31,8 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach
-                items='<%=(new CourseDao()).findAllByTeacherId(((User)session.getAttribute("user")).getId())%>'
-                var="course">
+        <c:forEach items='<%=(new CourseDao()).findAllByTeacherId(((User)session.getAttribute("user")).getId())%>'
+                   var="course">
             <jsp:useBean id="currentCourse" class="com.example.finalProjectServlet.model.entity.Course"/>
             <jsp:setProperty name="currentCourse" property="id" value="${course.id}"/>
             <tr>

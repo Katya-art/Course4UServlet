@@ -53,9 +53,8 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach
-                items='<%=(new CourseDao()).findAllByIdAndCondition(((User)session.getAttribute("user")).getId(),
-                Integer.parseInt(String.valueOf(request.getAttribute("conditionId"))))%>' var="course">
+        <c:forEach items='<%=(new CourseDao()).findAllByStudentIdAndConditionId(((User)session.getAttribute("user")).getId(),
+        Integer.parseInt(String.valueOf(request.getAttribute("conditionId"))))%>' var="course">
             <tr>
                 <td>${course.name}</td>
                 <td>${course.teacherName}</td>

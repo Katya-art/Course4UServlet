@@ -1,6 +1,6 @@
 package com.example.finalProjectServlet.model.entity;
 
-public class User {
+public class User implements Comparable<User> {
 
     private Long id;
 
@@ -82,5 +82,10 @@ public class User {
 
     public void setStatusId(int statusId) {
         this.statusId = statusId;
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return this.getFullName().compareTo(o.fullName);
     }
 }

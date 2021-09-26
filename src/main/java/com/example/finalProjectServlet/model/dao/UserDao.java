@@ -4,7 +4,9 @@ import com.example.finalProjectServlet.model.DBManager;
 import com.example.finalProjectServlet.model.entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class UserDao {
@@ -19,7 +21,7 @@ public class UserDao {
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM users WHERE id = ?;";
 
-    private static final String SQL_FIND_ALL_BY_ROLE = "SELECT * FROM users WHERE role_id = ?;";
+    private static final String SQL_FIND_ALL_BY_ROLE = "SELECT * FROM users WHERE role_id = ? ORDER BY full_name;";
 
     private static final String SQL_UPDATE_USER_STATUS = "UPDATE users SET status_id=? WHERE id=?";
 
@@ -129,8 +131,8 @@ public class UserDao {
         return user;
     }
 
-    public Set<User> findAllByRole(int roleId) {
-        Set<User> users = new HashSet<>();
+    public List<User> findAllByRole(int roleId) {
+        List<User> users = new ArrayList<>();
         PreparedStatement preparedStatement;
         ResultSet resultSet;
         Connection connection = null;

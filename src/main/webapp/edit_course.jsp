@@ -47,7 +47,7 @@
                value="${course.duration}">
         <span style="color: #ac2925">${durationError}</span><br/>
         <select id="teacherId" name="teacherId">
-            <c:forEach items="<%=(new UserDao()).findAllByRole(3)%>" var="teacher">
+            <c:forEach items='<%=(new UserDao()).findAllByRole(3)%>' var="teacher">
                 <c:choose>
                     <c:when test="${teacher.id == course.teacherId}">
                         <option value="${teacher.id}" selected="selected">${teacher.fullName}</option>

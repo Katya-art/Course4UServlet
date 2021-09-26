@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertTrue;
@@ -138,7 +140,7 @@ public class AnotherCommandsTest extends Mockito {
                 "testUser2", 1, 1);;
         user2.setId(2L);
 
-        Set<User> students = new HashSet<>();
+        List<User> students = new ArrayList<>();
         students.add(user1);
         students.add(user2);
 

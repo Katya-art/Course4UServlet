@@ -59,7 +59,7 @@
             </tbody>
         </table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value='<fmt:message key="save"/>'></button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="save"/></button>
     </form>
     <span style="float: right">
     <a href="?sessionLocale=en">en</a>

@@ -36,10 +36,11 @@
         <span style="color: #ac2925">${durationError}</span><br/>
         <select id="teacher" name="teacher">
             <option value="0"><fmt:message key="selectTeacher"/></option>
-            <c:forEach items="<%=(new UserDao()).findAllByRole(3)%>" var="teacher">
+            <c:forEach items='<%=(new UserDao()).findAllByRole(3)%>' var="teacher">
                 <option value="${teacher.id}">${teacher.fullName}</option>
             </c:forEach>
         </select>
+        <span style="color: #ac2925">${teacherError}</span><br/>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value='<fmt:message key="save"/>'>
     </form>
     <span style="float: right">
